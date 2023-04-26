@@ -15,10 +15,9 @@ def print_words(story_words):
         print(word)
 
 def main():
-    words = fetwords()
+    words = fetchwords()
     print_words(words)
-
-
+    
 
 if __name__ == '__name__':
     main()
