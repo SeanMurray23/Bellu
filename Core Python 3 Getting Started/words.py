@@ -15,7 +15,7 @@ def print_words(story_words):
         print(word)
 
 def main():
-    words = fetchwords()
+    words = fetch_words()
     print_words(words)
     
 
