@@ -12,8 +12,11 @@ DIGIT_MAP = {
 }
 
 def converts(s):
-    number =""
-    for token in s:
-        number += DIGIT_MAP[token]
-    x = int(number)
+    try:
+        number =""
+        for token in s:
+            number += DIGIT_MAP[token]
+        x = int(number)
+    except KeyError:
+        x = -1
     return x
