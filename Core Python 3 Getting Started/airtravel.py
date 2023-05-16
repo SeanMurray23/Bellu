@@ -20,7 +20,7 @@ class Flight:
     
 class Aircraft:
     
-    def __intit__(self,registion,model,num_rows,num_seats_per_row):
+    def __init__(self,registion,model,num_rows,num_seats_per_row):
         self._registion = registion
         self._model = model
         self._num_rows = num_rows
