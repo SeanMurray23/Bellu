@@ -20,7 +20,7 @@ class Flight:
     
 class Aircraft:
     
-    def __intit__(self, registion, model, num_rows, num_seats_per_row):
+    def __intit__(self,registion,model,num_rows,num_seats_per_row):
         self._registion = registion
         self._model = model
         self._num_rows = num_rows
@@ -35,4 +35,3 @@ class Aircraft:
     def seating_plan(self):
         return(range(1, self._num_rows + 1),
                "ABCDEFGHJK"[:self._num_seats_per_row])
-    
