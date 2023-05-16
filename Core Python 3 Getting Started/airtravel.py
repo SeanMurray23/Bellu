@@ -1,16 +1,22 @@
 class Flight:
+    """Flight stuff
+    """
 
-    def __init__(self,number):
+    def __init__(self,number, aircraft):
         if not number[:2].isalpha():
             raise ValueError(f"No Air Line code in {number}")
         
         if not number[:2].isupper():
             raise ValueError(f"Invalid Airlone code {number}")
         
-        if not (number[2:].isdigit() and int(number[2:] <= 9999)):
-            raise ValueError(f"Invalid Airlone code {number}") 
+        if not (number[2:].isdigit() and int(number[2:]) <= 9999):
+            raise ValueError(f"Invalid Airline code {number}") 
         
         self._number = number
+        self._aircraft = aircraft
+        
+    def aircraft_model(self):
+        return self._aircraft.model()
     
     def number(self):
         return self._number
