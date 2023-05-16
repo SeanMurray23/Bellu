@@ -17,6 +17,8 @@ def converts(s):
         for token in s:
             number += DIGIT_MAP[token]
         x = int(number)
+        print(f"Converts success x = {x}")
     except KeyError:
+        print('you failed')
         x = -1
     return x
