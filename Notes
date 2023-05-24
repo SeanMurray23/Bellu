@@ -1,0 +1,32 @@
+Basic Project Structure for Python
+
+project_name/               <-- Project root - not the package
+    README.rst              <-- Overview Document
+    docs/                   <-- Project documentation
+    src/                    <-- Package/production code
+        package_name/       
+            __init__.py         
+            more_source.py      
+            subpackage1/        
+                __init__.py 
+    tests/                  <-- All tests for the project
+        test_code.py        <--
+    setup.py                <--
+
+
+
+    Basic setup.py file
+
+import setuptools
+
+setuptools.setup(
+    name="demo_reader",
+    version="1.0.0",
+    description="Tools for reading various files",
+    packages='setuptools.findpackages('src')',
+    package_dir={'': 'src'}
+    )
+
+
+
+

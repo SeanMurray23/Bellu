@@ -1,2 +1,2 @@
 # Bellu
-Going through BellU videos
+Going through BellU video
