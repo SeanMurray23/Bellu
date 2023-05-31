@@ -1,12 +1,14 @@
 
 class Employee:
-    def __init__(self):
-        self.__dict__['name'] = "Ji-soon"
-        self.__dict__['age'] = "38"
-        self.__dict__['position'] = "developer"
-        self.__dict__['salary'] = "1200"
+    def __init__(self, name, age, position, salary):
+        self.name = name
+        self.age = age
+        self.position = position
+        self.salary = salary
         
 
-e = Employee()
+employee1 = Employee("Jin", 38 , "developer", 1200)
+employee2 = Employee("Laura", 44, "tester", 1000)
 
-print(e.name)
+print(employee1.name)
+print(employee2.name)
