@@ -18,6 +18,9 @@ class Employee:
             f"{repr(self.name)}, {repr(self.age)}, "
             f"{repr(self.position)}, {repr(self.salary)})"
         )
+        
+    def __add__(self, other_employee):
+        return Employee("New", self.age + other_employee.age, "dev", 2000)
 
 employee1 = Employee("Jin", 38 , "developer", 1200)
 employee2 = Employee("Laura", 44, "tester", 1000)
@@ -27,3 +30,6 @@ Employee.increase_salary(employee2, 20)
 print(employee2)
 print(str(employee2))
 print(repr(employee2))
+
+employee3 = employee1 + employee2
+print(employee3)
