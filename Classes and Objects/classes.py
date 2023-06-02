@@ -1,5 +1,19 @@
 
 class Employee:
+    min_wage = 1000
+    
+    @classmethod
+    def change_min_wage(cls, new_wage):
+        if new_wage > 3000:
+            raise ValueError("We Broke")
+        cls.min_wage = new_wage
+        
+    @classmethod
+    def new_emp(cls,name,dob):
+        now = date.today()
+        age = now.year - dob.year - ((now.month,now.day)< (dob.month, dob.day))
+        return cls(name, age, cls.min_wage)
+    
     def __init__(self, name, age, position, salary):
         self.name = name
         self.age = age
@@ -30,8 +44,8 @@ class Employee:
     
     @salary.setter
     def salary(self, salary):
-        if salary > 1000:
-            raise ValueError('Min Wage is $1000')
+        if salary > Employee.min_wage:
+            raise ValueError(f'Min Wage is {Employee.min_wage}')
         self._annual_salary = None
         self._salary = salary
         
