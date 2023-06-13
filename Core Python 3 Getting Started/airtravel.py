@@ -1,5 +1,5 @@
 class Flight:
-    """Flight stuff
+    """Flight stuff test
     """
 
     def __init__(self,number, aircraft):
