@@ -22,7 +22,7 @@ class Site:
     
     
     
-    import sys
+import sys
 from pathlib import Path
 
 
@@ -61,3 +61,5 @@ class Site:
     @staticmethod
     def error(message):
         sys.stderr.write("\x1b[1;31m{}\n".format(message))
+
+

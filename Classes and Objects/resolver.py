@@ -1,4 +1,5 @@
 import socket
+import sys,
 
 class Resolver:
     
@@ -15,3 +16,6 @@ class Resolver:
         
     def has_host(self, host):
         return host in self._cache
+    
+    
+    sys.path.insert()
