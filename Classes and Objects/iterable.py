@@ -107,3 +107,14 @@ class TranslationIterator:
     
     def __iter__(self):
         return self
+    
+    
+class PerfectBinaryTree:
+    
+    def __init__(self,breadth_first_items):
+        self._sequence = tuple(breadth_first_items)
+        if not _is_perfect_length(self._sequence):
+            raise ValueError(f"Sequence of {len(self._sequence)} does not rep a binary tree of 2-1")
+        
+    def __iter__(self):
+        return SkipMissingIterator(PreOrderIterator(self._sequence))
