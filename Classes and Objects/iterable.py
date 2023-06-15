@@ -79,4 +79,18 @@ class InOrderIterator:
     
     def __iter__(self):
         return self
+
+missing = object()
+
+class SkipMissingIterator:
+    
+    def __init__(self,iterable):
+        self._iterator = iter(iterable)
         
+    def __next__(self):
+        item = next(self._iterator) 
+        if item is not missing:
+            return item
+        
+    def __iter__(self):
+        return self
