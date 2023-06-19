@@ -95,11 +95,72 @@ class TestSquenceProtocol(unittest.TestCase):
         self.assertEqual(self.s[-1], 15)
     
     def test_index_minus_5(self):
-        self.assertEqual(self.s[-5,1])
+        self.assertEqual(self.s[-5],1)
     
     def test_index_one_before_the_beginning(self):
         with self.assertRaises(IndexError):
             self.s[-6]
+
+    def test_slice_from_start(self):
+        self.assertEqual(self.s[:3], SortedFrozenSet([1,4,9]))
+
+    def test_slice_from_end(self):
+        self.assertEqual(self.s[3:], SortedFrozenSet([13,15]))
+
+    #def test_slice_empty(self):
+     #   self.assertEqual(self.s[10:], SortedFrozenSet())
+
+    def test_slice_arbitrary(self):
+        self.assertEqual(self.s[2:4], SortedFrozenSet([9,13]))
+
+    def test_slice_step(self):
+        self.assertEqual(self.s[0:5:2], SortedFrozenSet([1,9,15]))
+
+    def test_slice_full(self):
+        self.assertEqual(self.s[:], self.s)    
+
+
+class TestReprProtocol(unittest.TestCase):
+
+    def test_repr_empty(self):
+        s = SortedFrozenSet()
+        self.assertEqual(repr(s), "SortedFrozenSet()")
+
+    def test_repr_one(self):
+        s = SortedFrozenSet([42,40,19])
+        self.assertEqual(repr(s), "SortedFrozenSet([19, 40, 42])")
+
+
+class TestEqualityProtocol(unittest.TestCase):
+     
+     def test_positive_equal(self):
+        self.assertTrue(
+            SortedFrozenSet([4,5,6]) == SortedFrozenSet([6,5,4])
+        )
+     
+     def test_negative_equal(self):
+        self.assertFalse(
+            SortedFrozenSet([4,5,6]) == SortedFrozenSet([1,2,3])
+        )
+
+     def test_type_mismatch(self):
+        self.assertFalse(
+            SortedFrozenSet([4,5,6]) == [4,5,6]
+        )
+     
+     def test_indentical(self):
+        s= SortedFrozenSet([10,11,12])
+        self.assertTrue(s == s)
+
+class TestHashableProtocol(unittest.TestCase):
+    
+    def test_equal_sets_have_the_same_hash(self):
+        self.assertEqual(
+            hash(SortedFrozenSet([5,2,1,4])),
+            hash(SortedFrozenSet([5,2,1,4]))
+        )
+
+
 
 if __name__ == '__main__':
     unittest.main()
