@@ -118,3 +118,4 @@ class PerfectBinaryTree:
         
     def __iter__(self):
         return SkipMissingIterator(PreOrderIterator(self._sequence))
+    
