@@ -59,7 +59,26 @@ class TestSizedProtocol(unittest.TestCase):
         s = SortedFrozenSet([5,5,5,])
         self.assertEqual(len(s),1)
 
+class TestIterableProtocol(unittest.TestCase):
+    
+    def setUp(self):
+        self.s = SortedFrozenSet([7,2,1,1,9])
 
+    def test_iter(self):
+        iterator =  iter(self.s)
+        self.assertEqual(next(iterator), 1)
+        self.assertEqual(next(iterator), 2)
+        self.assertEqual(next(iterator), 7)
+        self.assertEqual(next(iterator), 9)
+        self.assertRaises(StopIteration, lambda: next(iterator))
+
+
+    def test_for_loop(self):
+        excepted = [1,2,7,9]
+        index = 0
+        for item in self.s:
+            self.assertEqual(item, excepted[index])
+            index += 1
 
 if __name__ == '__main__':
     unittest.main()
