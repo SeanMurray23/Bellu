@@ -12,3 +12,5 @@ class SortedFrozenSet:
     def __iter__(self):
         return iter(self._items)
     
+    def __getitem__(self, index):
+        return self._items[index]

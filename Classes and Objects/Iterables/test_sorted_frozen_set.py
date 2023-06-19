@@ -80,5 +80,26 @@ class TestIterableProtocol(unittest.TestCase):
             self.assertEqual(item, excepted[index])
             index += 1
 
+class TestSquenceProtocol(unittest.TestCase):
+    def setUp(self):
+        self.s = SortedFrozenSet([1,4,9,13,15])
+        
+    def test_index_zero(self):
+        self.assertEqual(self.s[0],1)
+
+    def test_index_one_beyond_the_end(self):
+        with self.assertRaises(IndexError):
+            self.s[5]
+        
+    def test_index_minus_one(self):
+        self.assertEqual(self.s[-1], 15)
+    
+    def test_index_minus_5(self):
+        self.assertEqual(self.s[-5,1])
+    
+    def test_index_one_before_the_beginning(self):
+        with self.assertRaises(IndexError):
+            self.s[-6]
+
 if __name__ == '__main__':
     unittest.main()
