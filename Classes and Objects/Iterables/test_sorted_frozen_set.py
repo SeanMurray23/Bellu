@@ -120,7 +120,7 @@ class TestSquenceProtocol(unittest.TestCase):
         self.assertEqual(self.s[:], self.s)
 
     def test_count_zero(self):
-        s = SortedFrozenSet([1,5,7,9])
+        s = SortedFrozenSet([1,5,7,9]) 
         self.assertEqual(s.count(11),0)
 
     def test_count_one(self):
