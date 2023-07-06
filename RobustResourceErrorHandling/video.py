@@ -1,3 +1,25 @@
+import contextlib
+import sys
+
+
+@contextlib.contextmanager
+def nest_test(name):
+    print('Entering:', name)
+    yield
+    print('Exiting:', name)
+
+@contextlib.contextmanager
+def logging_context_manager():  #generator
+    print('logging_context_manager:Enter')
+    try:
+        yield " You're in a With block"
+        print("logging_context_manager: normal exit")
+    except Exception:
+        print('logging contenxt manager :exception exit', sys.exc_info())
+    raise # this will push exception to repl
+
+
+
 class LoggingContextManager:
     def __enter__(self):
         print("LogginContextManager.__enter__()")
