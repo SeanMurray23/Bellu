@@ -1,9 +1,10 @@
+import contextlib
 class Conntection:
     def __init__(self):
         self.xid = 0
     
     def _start_transcation(self):
-        print('starting transcation,' self.xid)
+        print('starting transaction:', self.xid)
         rslt = self.xid
         self.xid = self.xid + 1
         return rslt
@@ -28,4 +29,14 @@ class Transcation:
         self.conn_rollback_transation(self.xid)
         
         
+@contextlib.contextmanager
+def start_transcation(connection):
+    tx = Transcation(connection)
+    
+    try:
+        yield
+    except:
+        tx.rollback()
+        raise
+    tx.commit()
         
