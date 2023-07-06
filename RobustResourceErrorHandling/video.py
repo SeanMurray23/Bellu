@@ -2,10 +2,21 @@ import contextlib
 import sys
 
 
+
+@contextlib.contextmanager
+def propagater(name,propagate):
+    try:
+        yield
+        print(name, 'exited normally')
+    except Exception:
+        print(name, "exited poorly")
+        if propagate:
+            raise
+
 @contextlib.contextmanager
 def nest_test(name):
     print('Entering:', name)
-    yield
+    yield name
     print('Exiting:', name)
 
 @contextlib.contextmanager
