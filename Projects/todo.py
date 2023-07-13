@@ -1,4 +1,4 @@
-import tkinker as tk
+import tkinter as tk
 
 
 class TaskList(tk.Tk):
@@ -11,6 +11,27 @@ class TaskList(tk.Tk):
             self.tasks = tasks
 
         self.title("Task List")
+
+        instructions = tk.Label(self, text="Enter Items into input field")
+        self.tasks.append(instructions)
+
+        for task in self.tasks:
+            task.pack()
+
+        self.new_task = tk.Text(self, height=4)
+        self.new_task.pack()
+        self.new_task.focus_set()
+
+        self.bind("<Return>", self.add_task)
+
+    def add_task(self, event=None):
+        task_text = self.new_task.get(1.0,tk.END).strip()
+
+        task_label = tk.Label(self, text=task_text,pady=10) 
+        task_label.pack()
+        self.tasks.append(task_label)
+        self.new_task.delete(1.0, tk.END)
+
 
 
 if __name__ == "__main__":
